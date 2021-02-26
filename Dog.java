@@ -1,14 +1,14 @@
 import java.text.*;
 
 public class Dog{
-  /****BASE VARIABELS****/
+                    /****BASE VARIABELS****/
   private String breed;
   private String color;
   private String name;
   private double hours;
   private double size;
 
-  /****CONSTRUCTORS****/
+                    /****CONSTRUCTORS****/
   //default 
   public Dog(){
     breed = "unknown";
@@ -23,7 +23,8 @@ public class Dog{
     hours = startHours;
     size = startSize;
   };
-  /****GET METHODS****/
+
+                    /****GET METHODS****/
   public String getBreed(){
     return breed;
   };
@@ -39,7 +40,8 @@ public class Dog{
   public double getHours(){
     return hours;
   };
-  /****SET METHODS****/
+
+                    /****SET METHODS****/
   public Dog setBreed(String breed){
     this.breed = breed;
     return this;
@@ -60,16 +62,16 @@ public class Dog{
     this.hours = hours;
     return this;
   };
-  /****OTHER METHODS****/
+                      /****OTHER METHODS****/
   public double pricePerDog(double sizeOfDog){
     double priceOfDog = 0;
     if(sizeOfDog == 0 ){
       priceOfDog = 0.00;
       return priceOfDog;
-    }else if(sizeOfDog > 0.5 || sizeOfDog < 25.5){
+    }else if(sizeOfDog > 0.5 && sizeOfDog < 25.5){
       priceOfDog = 10.95;
       return priceOfDog;
-    }else if(sizeOfDog >25.5 || sizeOfDog < 75.5){
+    }else if(sizeOfDog >25.5 && sizeOfDog < 75.5){
       priceOfDog = 15.89;
       return priceOfDog;
     }else{
@@ -86,7 +88,7 @@ public class Dog{
   public String toString(){
     DecimalFormat moneyFormat = new DecimalFormat("0.00");
 
-    return "Dog's name: " + name + "\nDog's Breed and Color: "+ breed + color + "\nSize:  "+ size + "lbs \nHours: " + hours + "\nYour dogs price per hour is: $" + moneyFormat.format(pricePerDog(size)) + "\n-------------------------------- \nYour total bill is: $" + moneyFormat.format(billingPrice());
+    return "\nDog's name: " + name + "\nDog's Breed and Color: "+ breed + color + "\nSize:  "+ size + "lbs \nHours: " + hours + "\nYour dogs price per hour is: $" + moneyFormat.format(pricePerDog(size)) + "\n-------------------------------- \nYour total bill is: $" + moneyFormat.format(billingPrice());
   }//overide tostring
 
 

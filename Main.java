@@ -11,46 +11,80 @@ class Main {
   public static void main(String[] args) {
     
     Scanner input = new Scanner(System.in);
-
-/* here is the menue to see tickets or make tickets*/
+    /*here is the array that stores the objects being made and called*/
+    // the day care can only hold 25 dogs at one time which is why the arry is set to 25
+    Dog [] dogsInCare = new Dog[25];
+    // setting the whole array to default until new entry.
+    int k = 0;
+    for(Dog i : dogsInCare){
+      dogsInCare[k] = new Dog();
+      k++;
+    }
+    int j = 0;
+    int count =0;
+    int menueChoice = 0;
+    String startBreed = "";
+    String startColor = "";
+    String startName ="";
+    double startSize = 0.0;
+    double startHours = 0.0;
+    /* here is the menue to see tickets or make tickets*/
 //0 exit
 //1 make entry
 //2 view entry
 //3 all logs
+    System.out.println("Welcome to Doggy DayCare!! ");
+    do{
+      System.out.println("Menue: \n\n0: Exit \n1: Make Doggy Entry \n2: Veiw A Bill \n3: View DayCare Logs");
+      menueChoice = input.nextInt();
+      
+      if(menueChoice == 1){
+        // this if will set the list over and over write the old dogs once 100 entrys happen
+        if(count > 25){
+          count = 0;
+        }
+        /*here is where the user is entering the data for there dog*/
+          System.out.println("Please enter the following infromation to check your dog in!");
+          System.out.println("\nBreed of Dog?");
+          startBreed = input.nextLine();
 
-/*here is where the user is entering the data for there dog*/
-    System.out.println("Welcome to Doggy DayCare!! \nPlease enter the following infromation to check your dog in!");
+          System.out.println("Color of Dog?");
+          startColor = input.nextLine();
 
-    System.out.println("Breed of Dog?");
-    String startBreed = input.nextLine();
+          System.out.println("Name of Dog?");
+          startName = input.nextLine();
 
-    System.out.println("Color of Dog?");
-    String startColor = input.nextLine();
+          System.out.println("Size of Dog?(in lbs)");
+          startSize = input.nextInt();
 
-    System.out.println("Name of Dog?");
-    String startName = input.nextLine();
+          System.out.println("How long will the Dog stay?(in hours)");
+          startHours = input.nextDouble();
+          dogsInCare[count] = new Dog(startBreed, startColor,startName, startSize,startHours);
+          
+          System.out.println("TICKET: " + count + dogsInCare[count].toString());
+          count++;
+          
+      }else if (menueChoice == 2){
+        System.out.println("Please enter your ticket number to review your bill: ");
+        int reviewTicket = input.nextInt();
+          System.out.println("TICKET: " + reviewTicket + dogsInCare[reviewTicket].toString());
+      }else if(menueChoice == 3){
+        System.out.println("All Dogs On Record:\n-------------------\n ");
+        /*this loop is for option 3 the logs of all dogs*/
+        
+        for(Dog i: dogsInCare){
+            
+           System.out.println("\nTICKET: " + j + dogsInCare[j].toString());
+           j++;
+        }
+        /*for(int i=0; i<dogsInCare.lenght; i++){
+            System.out.println("\nTICKET: " + i + dogsInCare[i].toString());
+        }*/
+      }else{
+        System.out.println("ERROR: Input Not Found");
+      }
 
-    System.out.println("Size of Dog?(in lbs)");
-    double startSize = input.nextInt();
-
-    System.out.println("How long will the Dog stay?(in hours)");
-    double startHours = input.nextDouble();
-/*here is the array that stores the objects being made and called*/
-    Dog [] dogs = new Dog[5];
-    
-    dogs[0] = new Dog(startBreed, startColor,startName, startSize,startHours);
-    dogs[1] = new Dog();
-    dogs[2] = new Dog();
-    dogs[3] = new Dog();
-    dogs[4] = new Dog();
-
-/*this loop is for option 3 the logs of all dogs*/
-    //Dog(startBreed, startColor,startName, startSize,startHours);
-    System.out.println(dogs[0].toString());
-    // for(int i : dogs){
-    //   System.out.println(dogs[i].getBreed);
-    // };
-    
+    }while(menueChoice != 0);
 
   }
 }
