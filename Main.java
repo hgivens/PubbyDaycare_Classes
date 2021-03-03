@@ -13,11 +13,11 @@ class Main {
     Scanner input = new Scanner(System.in);
     /*here is the array that stores the objects being made and called*/
     // the day care can only hold 25 dogs at one time which is why the arry is set to 25
-    Dog [] dogsInCare = new Dog[25];
+    Location [] dogsInCare_Dover = new Location[25];
     // setting the whole array to default until new entry.
     int k = 0;
-    for(Dog i : dogsInCare){
-      dogsInCare[k] = new Dog();
+    for(Location i : dogsInCare_Dover){
+      dogsInCare_Dover[k] = new Location("...","...","...",0.0,0.0,"...");
       k++;
     }
     int j = 0;
@@ -28,6 +28,7 @@ class Main {
     String startName ="";
     double startSize = 0.0;
     double startHours = 0.0;
+    String setLocation = "";
     /* here is the menue to see tickets or make tickets*/
 //0 exit
 //1 make entry
@@ -43,6 +44,7 @@ class Main {
         if(count > 25){
           count = 0;
         }
+        setLocation = "Dover";
         /*here is where the user is entering the data for there dog*/
           System.out.println("Please enter the following infromation to check your dog in!");
           System.out.println("\nBreed of Dog?");
@@ -59,27 +61,24 @@ class Main {
 
           System.out.println("How long will the Dog stay?(in hours)");
           startHours = input.nextDouble();
-          dogsInCare[count] = new Dog(startBreed, startColor,startName, startSize,startHours);
+          dogsInCare_Dover[count] = new Location(startBreed, startColor,startName, startSize,startHours,setLocation);
           
-          System.out.println("TICKET: " + count + dogsInCare[count].toString());
+          System.out.println("TICKET: " + count + dogsInCare_Dover[count].toString());
           count++;
           
       }else if (menueChoice == 2){
         System.out.println("Please enter your ticket number to review your bill: ");
         int reviewTicket = input.nextInt();
-          System.out.println("TICKET: " + reviewTicket + dogsInCare[reviewTicket].toString());
+          System.out.println("TICKET: " + reviewTicket + dogsInCare_Dover[reviewTicket].toString());
       }else if(menueChoice == 3){
         System.out.println("All Dogs On Record:\n-------------------\n ");
         /*this loop is for option 3 the logs of all dogs*/
         
-        for(Dog i: dogsInCare){
+        for(Location i: dogsInCare_Dover){
             
-           System.out.println("\nTICKET: " + j + dogsInCare[j].toString());
+           System.out.println("\nTICKET: " + j + dogsInCare_Dover[j].toString());
            j++;
         }
-        /*for(int i=0; i<dogsInCare.lenght; i++){
-            System.out.println("\nTICKET: " + i + dogsInCare[i].toString());
-        }*/
       }else{
         System.out.println("ERROR: Input Not Found");
       }
